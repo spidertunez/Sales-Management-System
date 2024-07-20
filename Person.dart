@@ -1,8 +1,8 @@
-abstract class person {
+abstract class Person {
   int id;
   String name;
 
-  person(this.id, this.name);
+  Person(this.id, this.name);
 
   @override
   String toString() {

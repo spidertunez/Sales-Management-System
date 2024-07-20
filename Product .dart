@@ -1,3 +1,4 @@
+
 class Product {
   final int productId;
   final String name;
@@ -12,6 +13,6 @@ class Product {
 
   @override
   String toString() {
-    return 'Product ID: $productId, Name: $name, Price: \$${price}, Stock Quantity: $instock';
+    return 'Product ID: $productId, Name: $name, Price: \$${price.toStringAsFixed(2)}, Stock Quantity: $instock';
   }
 }

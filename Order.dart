@@ -2,7 +2,7 @@ import 'Customer.dart';
 import 'Product .dart';
 import 'print.dart';
 
-class Order implements Print {
+class Order implements Printt {
   final int orderId;
   final Customer customer;
   final DateTime orderDate;
@@ -11,7 +11,6 @@ class Order implements Print {
   Order(this.orderId, this.customer, this.orderDate);
 
   void addProduct(Product product, int quantity) {
-    if (quantity <= 0) return;
     items[product] = (items[product] ?? 0) + quantity;
     product.updatestock(-quantity);
   }
@@ -26,12 +25,16 @@ class Order implements Print {
 
   @override
   String printDetails() {
+    var itemDetails = items.entries.map((entry) {
+      var product = entry.key;
+      var quantity = entry.value;
+      return 'Product ID: ${product.productId}, Name: ${product.name}, Quantity: $quantity, Price: \$${product.price.toStringAsFixed(2)}';
+    }).join('\n');
+
     return 'Order ID: $orderId\n'
            'Customer: ${customer.name}\n'
            'Date: $orderDate\n'
-           'Items:\n' +
-           items.entries.map((entry) =>
-             'Product: ${entry.key.name}, Quantity: ${entry.value}, Price: \$${entry.key.price.toStringAsFixed(2)}'
-           ).join('\n');
+           'Items:\n$itemDetails\n'
+           'Total Amount: \$${getTotalAmount().toStringAsFixed(2)}';
   }
 }

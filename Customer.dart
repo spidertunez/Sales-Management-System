@@ -1,6 +1,6 @@
 import 'Person.dart';
 
-class Customer extends person {
+class Customer extends Person {
   final String email;
   final String phoneNumber;
 

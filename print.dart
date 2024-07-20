@@ -1,3 +1,3 @@
-abstract class Print {
+abstract class Printt {
   String printDetails();
 }
